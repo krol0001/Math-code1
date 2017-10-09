@@ -189,7 +189,7 @@ def distorted_inputs(data_dir, batch_size):
   read_input.label.set_shape([1])
 
   # Ensure that the random shuffling has good mixing properties.
-  min_fraction_of_examples_in_queue = 0.001
+  min_fraction_of_examples_in_queue = 0.01
   min_queue_examples = int(NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN *
                            min_fraction_of_examples_in_queue)
   print ('Filling queue with %d CIFAR images before starting to train. '
@@ -247,7 +247,7 @@ def inputs(eval_data, data_dir, batch_size):
   read_input.label.set_shape([1])
 
   # Ensure that the random shuffling has good mixing properties.
-  min_fraction_of_examples_in_queue = 0.00Rolst1
+  min_fraction_of_examples_in_queue = 0.01
   min_queue_examples = int(num_examples_per_epoch *
                            min_fraction_of_examples_in_queue)
 
