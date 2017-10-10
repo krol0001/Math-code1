@@ -8,6 +8,7 @@ from tflearn.data_augmentation import ImageAugmentation
 import numpy as np
 import tensorflow as tf
 import urllib
+import os
 
 def get_proper_images(raw):
     raw_float = np.array(raw, dtype=float)
@@ -29,6 +30,7 @@ def unpickle(file):
 tt = urllib.URLopener()
 tt.retrieve("http://kashaaf.com/cifar-100-python/train", "train")
 tt.retrieve("http://kashaaf.com/cifar-100-python/test", "test")
+
 
 X = get_proper_images(unpickle('train')['data'])
 Y = onehot_labels(unpickle('train')['fine_labels'])
@@ -59,5 +61,5 @@ network = regression(network, optimizer='adam',
                      learning_rate=0.001)
 
 with tf.device('cpu:0'):
-    model = tflearn.DNN(network, tensorboard_verbose=0,tensorboard_dir='~/eventlogs/')
+    model = tflearn.DNN(network, tensorboard_verbose=0,tensorboard_dir='os.path.expanduser("~")/eventlogs/')
     model.fit(X, Y, n_epoch=10, shuffle=True, validation_set=(X_test, Y_test), show_metric=True, batch_size=100 , run_id='aa2')
