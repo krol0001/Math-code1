@@ -149,6 +149,7 @@ def distorted_inputs(data_dir, batch_size):
     labels: Labels. 1D tensor of [batch_size] size.
   """
   filenames = [os.path.join(data_dir, 'train.bin')]
+  
   for f in filenames:
     if not tf.gfile.Exists(f):
       raise ValueError('Failed to find file: ' + f)
