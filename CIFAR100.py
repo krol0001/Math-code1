@@ -56,10 +56,10 @@ network = max_pool_2d(network, 2 , strides=None, padding='same')
 network = fully_connected(network, 600, activation='relu')
 network = dropout(network, 0.5)
 network = fully_connected(network, 100, activation='softmax')
-network = regression(network, optimizer='SGD',
+network = regression(network, optimizer='AdaGrad',
                      loss='categorical_crossentropy',
                      learning_rate=0.001)
 
 with tf.device('cpu:0'):
-    model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=os.path.expanduser('~/eventlogs/test2'))
+    model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=os.path.expanduser('~/eventlogs/test3'))
     model.fit(X, Y, n_epoch=40, shuffle=True, validation_set=(X_test, Y_test), show_metric=True, batch_size=100 , run_id='aa2')
