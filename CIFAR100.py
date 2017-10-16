@@ -5,6 +5,8 @@ from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.estimator import regression
 from tflearn.data_preprocessing import ImagePreprocessing
 from tflearn.data_augmentation import ImageAugmentation
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import numpy as np
 import tensorflow as tf
 import urllib
@@ -62,11 +64,11 @@ network = max_pool_2d(network, 2 , strides=None, padding='same')
 network = fully_connected(network, 600, activation='relu')
 network = dropout(network, 0.5)  # This ignores some of the neurons during training in order to avoid overfitting (Randomly)
 network = fully_connected(network, 100, activation='softmax') # The final layer, producing a 100x1 vector of the 100 classes
-network = regression(network, optimizer='adam', # The optimization algorithm that is used as well as the loss function.
+network = regression(network, optimizer='RMSProp', # The optimization algorithm that is used as well as the loss function.
                      loss='categorical_crossentropy',
                      learning_rate=0.001)
 
 with tf.device('cpu:0'):
     model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=os.path.expanduser('~/eventlogs/test5')) # This is the actual training of the network
-    model.fit(X, Y, n_epoch=50  , shuffle=True, validation_set=(X_test, Y_test), show_metric=True, batch_size=100 , run_id='aa2') # Here the output is compared
+    model.fit(X, Y, n_epoch=40  , shuffle=True, validation_set=(X_test, Y_test), show_metric=True, batch_size=100 , run_id='aa2') # Here the output is compared
     #                                                                                                                   to the validation set and accuracy is found
