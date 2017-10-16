@@ -5,8 +5,6 @@ from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.estimator import regression
 from tflearn.data_preprocessing import ImagePreprocessing
 from tflearn.data_augmentation import ImageAugmentation
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import numpy as np
 import tensorflow as tf
 import urllib
