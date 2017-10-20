@@ -67,6 +67,6 @@ network = regression(network, optimizer='AdaGrad', # The optimization algorithm 
                      learning_rate=0.001)
 
 with tf.device('cpu:0'):
-    model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=os.path.expanduser('~/eventlogs/test7')) # This is the actual training of the network
+    model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=os.path.expanduser('~/eventlogs/test8')) # This is the actual training of the network
     model.fit(X, Y, n_epoch=40  , shuffle=True, validation_set=(X_test, Y_test), show_metric=True, batch_size=100 , run_id='aa2') # Here the output is compared
     #                                                                                                                   to the validation set and accuracy is found
