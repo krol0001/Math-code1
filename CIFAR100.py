@@ -54,8 +54,6 @@ network = max_pool_2d(network, 2 , strides=None, padding='same') #This is a down
 #                                                               , allowing for assumptions to be made about the features
 network = conv_2d(network, 64, 3, strides=1, padding='same', activation='relu', bias=True,
                   bias_init='zeros', weights_init='uniform_scaling')
-network = conv_2d(network, 64, 3 , strides=1, padding='same', activation='relu', bias=True,
-                  bias_init='zeros', weights_init='uniform_scaling')
 network = conv_2d(network, 64, 3, strides=1, padding='same', activation='relu', bias=True,
                   bias_init='zeros', weights_init='uniform_scaling')
 network = max_pool_2d(network, 2 , strides=None, padding='same')
